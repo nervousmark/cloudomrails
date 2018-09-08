@@ -9,7 +9,10 @@ Rails.application.routes.draw do
   end
   get 'pages/home'
   get 'pages/about'
+  get 'pages/tweets'
+  get 'pages/admin'
   root "pages#home"
   get 'about' => 'pages#about', slug: 'page_about'
+  get 'about' => 'pages#tweets', slug: 'page_tweets' 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
