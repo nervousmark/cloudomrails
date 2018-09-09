@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :photos
   resources :tweets
   ActiveAdmin.routes(self)
   devise_for :users
@@ -10,9 +11,10 @@ Rails.application.routes.draw do
   get 'pages/home'
   get 'pages/about'
   get 'pages/tweets'
-  get 'pages/admin'
+  get 'pages/photos'
   root "pages#home"
   get 'about' => 'pages#about', slug: 'page_about'
-  get 'about' => 'pages#tweets', slug: 'page_tweets' 
+  get 'tweets' => 'pages#tweets', slug: 'page_tweets' 
+  get 'photos' => 'pages#photos', slug: 'page_tweets'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
