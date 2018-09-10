@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :items
   resources :photos
   resources :tweets
   ActiveAdmin.routes(self)
@@ -16,5 +17,6 @@ Rails.application.routes.draw do
   get 'about' => 'pages#about', slug: 'page_about'
   get 'tweets' => 'pages#tweets', slug: 'page_tweets' 
   get 'photos' => 'pages#photos', slug: 'page_tweets'
+  get 'items' => 'pages#items', slug: 'page_items'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
