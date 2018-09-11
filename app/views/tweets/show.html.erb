@@ -7,6 +7,7 @@
             <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
             <p class="card-text"><%= @tweet.content %></p>
             <%= link_to 'Edit', edit_tweet_path(@tweet), class:"card-link" %>
+            <%= link_to 'Delete', @tweet, Method: :destroy, class:"card-link" %>
             <%= link_to 'Back', tweets_path, class:"card-link" %>
           </div>
         </div>
