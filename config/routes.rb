@@ -1,22 +1,25 @@
 Rails.application.routes.draw do
+  get 'users/:username', to: 'users#show', as: 'user'
+  
   resources :items
   resources :photos
   resources :tweets
   ActiveAdmin.routes(self)
   devise_for :users
   as :user do
-    get "signin" => 'devise/sessions#new'
-    delete "signout" => 'devise/sessions#destroy'
-    get "signup" => 'devise/registrations#new'
+    get "signin", to: 'devise/sessions#new'
+    delete "signout", to: 'devise/sessions#destroy'
+    get "signup", to: 'devise/registrations#new'
   end
   get 'pages/home'
   get 'pages/about'
   get 'pages/tweets'
   get 'pages/photos'
   root "pages#home"
-  get 'about' => 'pages#about', slug: 'page_about'
-  get 'tweets' => 'pages#tweets', slug: 'page_tweets' 
-  get 'photos' => 'pages#photos', slug: 'page_tweets'
-  get 'items' => 'pages#items', slug: 'page_items'
+  get 'about', to: 'pages#about', slug: 'page_about'
+  get 'tweets', to: 'pages#tweets', slug: 'page_tweets' 
+  get 'photos', to: 'pages#photos', slug: 'page_photos'
+  get 'items', to: 'pages#items', slug: 'page_items'
+  get 'users', to: 'pages#users', slug: 'page_users'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
