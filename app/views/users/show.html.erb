@@ -4,13 +4,18 @@
             <div class="card-block">
               <h4 class = "card-title"><%= @user.username %></h4>
                   <p class="card-text"><%= @user.name %></p>
+                  <% if current_user.following?(@user) %>
+                    <p class="card-text"><%= link_to "UnFollow", unfollow_user_path(@user.username), method: :delete %> </p>
+                  <% else %>
+                    <p class="card-text"><%= link_to "Follow", follow_user_path(@user.username), method: :post %> </p>
+                  <% end %>
             </div>
         </div>
        
         <div class="col-md-8">
           <ul class="list-group">
-              <%= @tweets.each do |tweet| %>
-                <%= link_to tweet, class: "list-group-item list-group-item-action" do %>
+              <% @tweets.each do |tweet| %>
+                <% link_to tweet, class: "list-group-item list-group-item-action" do %>
                   <h5 class ="list-group-item-heading"><%= tweet.user.username %></h5>
                   <p class ="list-group-item-text"><%= tweet.content %></p>
                  <% end %>
